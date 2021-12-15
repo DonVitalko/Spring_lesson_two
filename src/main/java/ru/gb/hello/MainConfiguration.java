@@ -5,6 +5,6 @@ import org.springframework.context.annotation.Configuration;
 
 
 @Configuration
-@ComponentScan("ru.gb.service")
+@ComponentScan("ru.gb")
 public class MainConfiguration {
 }
