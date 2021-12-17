@@ -1,26 +1,26 @@
 package ru.gb.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 import ru.gb.entity.Product;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.function.Consumer;
 
 @Component
 @Scope("prototype")
 public class Cart implements Consumer<Product> {
 
-    private final Map<Integer, Product> cart = new HashMap<>();
+    private final ListMultimap<Integer, Product> cart = ArrayListMultimap.create();
 
     public void addCart(Product productId) {
         cart.put(productId.getId(), productId);
     }
 
     public void remove(int productId) {
-        cart.remove(productId);
+        cart.remove(productId, productId);
     }
 
     public void showCart() {
